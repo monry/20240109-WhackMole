@@ -1,0 +1,20 @@
+{
+    "name": "Monry.WhackMole.Editor",
+    "rootNamespace": "Monry.WhackMole.Editor",
+    "references": [
+        "GUID:4d2152c4577f648b09c3f90974090a37",
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:f8c68d614fe30d647996098360b5e0d5"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

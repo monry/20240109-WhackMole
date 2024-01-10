@@ -6,25 +6,27 @@ using VContainer.Unity;
 using VitalRouter.VContainer;
 using ZLogger.Unity;
 
-namespace Monry.WhackMole.LifetimeScopes;
-
-public class TitleLifetimeScope : LifetimeScope
+// ReSharper disable once ArrangeNamespaceBody
+namespace Monry.WhackMole.LifetimeScopes
 {
-    protected override void Configure(IContainerBuilder builder)
+    public class TitleLifetimeScope : LifetimeScope
     {
-        builder.Register<ILoggerFactory>(
-            _ =>
-                LoggerFactory.Create(
-                    logging =>
-                    {
-                        logging.AddZLoggerUnityDebug();
-                    }),
-            Lifetime.Singleton
-        );
-        builder.RegisterVitalRouter(routingBuilder =>
+        protected override void Configure(IContainerBuilder builder)
         {
-            routingBuilder.Map<TitlePresenter>();
-        });
-        builder.Register<CounterButton.Processor>(Lifetime.Singleton);
+            builder.Register<ILoggerFactory>(
+                _ =>
+                    LoggerFactory.Create(
+                        logging =>
+                        {
+                            logging.AddZLoggerUnityDebug();
+                        }),
+                Lifetime.Singleton
+            );
+            builder.RegisterVitalRouter(routingBuilder =>
+            {
+                routingBuilder.Map<TitlePresenter>();
+            });
+            builder.Register<CounterButton.Processor>(Lifetime.Singleton);
+        }
     }
 }

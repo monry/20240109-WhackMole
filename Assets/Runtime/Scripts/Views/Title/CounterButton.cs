@@ -7,28 +7,30 @@ using UnityEngine.UI;
 using VContainer;
 using VitalRouter;
 
-namespace Monry.WhackMole.Views.Title;
-
-public class CounterButton : MonoBehaviour
+// ReSharper disable once ArrangeNamespaceBody
+namespace Monry.WhackMole.Views.Title
 {
-    [SerializeField] private Button _button = default!;
-    [Inject] private Processor _processor = default!;
-    private int _counter = 0;
-
-    private void Start()
+    public class CounterButton : MonoBehaviour
     {
-        _button.OnClickAsObservable()
-            .BindCommand(_processor, () => new ButtonClickedCommand(++_counter))
-            .AddTo(this);
-    }
+        [SerializeField] private Button _button = default!;
+        [Inject] private Processor _processor = default!;
+        private int _counter = 0;
 
-    public class Processor : ICommandPublishable<ButtonClickedCommand>
-    {
-        public ICommandPublisher CommandPublisher { get; }
-
-        public Processor(ICommandPublisher commandPublisher)
+        private void Start()
         {
-            CommandPublisher = commandPublisher;
+            _button.OnClickAsObservable()
+                .BindCommand(_processor, () => new ButtonClickedCommand(++_counter))
+                .AddTo(this);
+        }
+
+        public class Processor : ICommandPublishable<ButtonClickedCommand>
+        {
+            public ICommandPublisher CommandPublisher { get; }
+
+            public Processor(ICommandPublisher commandPublisher)
+            {
+                CommandPublisher = commandPublisher;
+            }
         }
     }
 }

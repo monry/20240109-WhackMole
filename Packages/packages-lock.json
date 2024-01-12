@@ -42,7 +42,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.aseprite": {
-      "version": "1.0.1",
+      "version": "1.1.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -167,7 +167,7 @@
         "com.unity.2d.spriteshape": "9.0.2",
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.2d.tilemap.extras": "3.1.2",
-        "com.unity.2d.aseprite": "1.0.1"
+        "com.unity.2d.aseprite": "1.1.0"
       }
     },
     "com.unity.ide.rider": {
@@ -190,6 +190,13 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.6",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -301,11 +308,20 @@
       "hash": "786e8a53959dcde4e8176a38470e29aacc14614d"
     },
     "jp.hadashikick.vitalrouter": {
-      "version": "git+ssh://git@github.com/hadashiA/Vitalrouter.git?path=/VitalRouter.Unity/Assets/VitalRouter#main",
+      "version": "git+ssh://git@github.com/hadashiA/Vitalrouter.git?path=/VitalRouter.Unity/Assets/VitalRouter#0.2.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "91c39a4f9dfcb174c524a50933d9f9d8191c424a"
+      "hash": "326eb5b66148826152cf1cadd6a4121394b80f89"
+    },
+    "jp.monry.toolbox": {
+      "version": "git+ssh://git@github.com/monry/UnityToolbox.git?path=/src/Monry.Toolbox/Assets/Toolbox/#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
+      },
+      "hash": "32b1961e971885d6958840fc39f1672b01dcd575"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

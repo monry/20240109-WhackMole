@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Monry.WhackMole.Presenters;
+using Monry.WhackMole.Views.Title;
 using VContainer;
 using VContainer.Unity;
 using VitalRouter.VContainer;
@@ -21,9 +22,11 @@ namespace Monry.WhackMole.LifetimeScopes
                         }),
                 Lifetime.Singleton
             );
+            builder.Register<ILogger>(objectResolver => objectResolver.Resolve<ILoggerFactory>().CreateLogger("global"), Lifetime.Singleton);
             builder.RegisterVitalRouter(routingBuilder =>
             {
                 routingBuilder.Map<TitlePresenter>();
+                routingBuilder.MapComponentInHierarchy<CounterButton>();
             });
         }
     }

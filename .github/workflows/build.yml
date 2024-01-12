@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on:
+    - self-hosted
+    - individual
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+    - uses: monry/github_actions/.github/actions/unity/install_editor@experimental

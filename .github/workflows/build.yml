@@ -27,5 +27,7 @@ jobs:
         ssh-key: ${{ steps.ssh_key.outputs.ssh_key }}
         submodules: recursive
         fetch-depth: 0
+        persist-credentials: false
+        set-safe-directory: false
     - name: Install Unity Editor
       uses: monry/github_actions/.github/actions/unity/install_editor@experimental

@@ -22,12 +22,12 @@ jobs:
     - name: Install Unity Editor
       uses: monry/github_actions/.github/actions/unity/install_editor@experimental
 
-  # cleanup:
-  #   runs-on:
-  #     - self-hosted
-  #     - individual
-  #   needs: prepare
-  #   if: always()
-  #   steps:
-  #   - name: Cleanup Git Config
-  #     run: 
+  cleanup:
+    runs-on:
+      - self-hosted
+      - individual
+    needs: prepare
+    if: always()
+    steps:
+    - name: Cleanup Git Config
+      uses: monry/github_actions/.github/actions/git/cleanup_config@experimental

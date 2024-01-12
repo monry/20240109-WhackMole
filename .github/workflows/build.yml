@@ -8,10 +8,24 @@ jobs:
     runs-on:
     - self-hosted
     - individual
+
+    defaults:
+      run:
+        shell: bash
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Export ssh key
+      id: ssh_key
+      run: |
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "ssh_key<<$EOF" >> $GITHUB_OUTPUT
+        cat ~/.ssh/id_rsa >> $GITHUB_OUTPUT
+        echo "$EOF" >> $GITHUB_OUTPUT
+    - name: Checkout
+      uses: actions/checkout@v4
       with:
-        submodules: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+        ssh-key: ${{ steps.ssh_key.outputs.ssh_key }}
+        submodules: recursive
         fetch-depth: 0
-    - uses: monry/github_actions/.github/actions/unity/install_editor@experimental
+    - name: Install Unity Editor
+      uses: monry/github_actions/.github/actions/unity/install_editor@experimental

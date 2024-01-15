@@ -36,8 +36,9 @@ jobs:
       uses: actions/checkout@v4
       with:
         ssh-key: ${{ secrets.PRIVATE_KEY }}
-        submodules: recursive
+        submodules: false
         persist-credentials: false
+        set-safe-directory: false
         fetch-depth: 0
     - name: Prepare for Build
       id: prepare_for_build
@@ -59,8 +60,9 @@ jobs:
       uses: actions/checkout@v4
       with:
         ssh-key: ${{ secrets.PRIVATE_KEY }}
-        submodules: recursive
+        submodules: false
         persist-credentials: false
+        set-safe-directory: false
         fetch-depth: 0
     - name: Build
       uses: monry/github_actions/.github/actions/unity/build/player@experimental

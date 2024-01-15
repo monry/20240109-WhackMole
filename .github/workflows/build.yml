@@ -27,10 +27,9 @@ jobs:
     runs-on:
     - self-hosted
     - individual
-
-    defaults:
-      run:
-        shell: bash
+    outputs:
+      unity_editor_version: ${{ steps.prepare_for_build.outputs.unity_editor_version }}
+      target_platforms: ${{ steps.prepare_for_build.outputs.target_platforms }}
 
     steps:
     - name: Checkout
@@ -38,17 +37,38 @@ jobs:
       with:
         submodules: recursive
         fetch-depth: 0
-    - name: Install Unity Editor
-      uses: monry/github_actions/.github/actions/unity/build/player@experimental
+    - name: Prepare for Build
+      id: prepare_for_build
+      uses: monry/github_actions/.github/actions/unity/prepare@experimental
       with:
         unity_editor_version_override: ${{ inputs.unity_editor_version_override }}
-        unity_editor_modules: "${{ inputs.build_for_ios && 'ios ' || '' }}${{ inputs.build_for_android && 'android ' || '' }}"
+        target_platforms: "${{ inputs.build_for_ios && 'iOS ' || '' }}${{ inputs.build_for_android && 'Android ' || '' }}"
 
+  build:
+    runs-on:
+    - self-hosted
+    - individual
+    needs: prepare
+    strategy:
+      matrix:
+        target_platform: ${{ fromJson(needs.prepare.outputs.target_platforms) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+    - name: Build
+      uses: monry/github_actions/.github/actions/unity/build/player@experimental
+      with:
+        unity_editor_version: ${{ needs.prepare.outputs.unity_editor_version }}
+        target_platform: ${{ matrix.target_platform }}
+    
   cleanup:
     runs-on:
       - self-hosted
       - individual
-    needs: prepare
+    needs: build
     if: always()
     steps:
     - name: Cleanup Git Config

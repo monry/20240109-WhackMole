@@ -8,7 +8,7 @@ on:
         type: string
         required: false
         default: ''
-        description: '利用する Unity Editor のバージョン (Optional)'
+        description: '利用する Unity バージョン (Optional)'
       # iOS ビルドをするかどうか
       build_for_ios:
         type: boolean

@@ -39,7 +39,7 @@ jobs:
         submodules: recursive
         fetch-depth: 0
     - name: Install Unity Editor
-      uses: monry/github_actions/.github/actions/unity/install_editor@experimental
+      uses: monry/github_actions/.github/actions/unity/build/player@experimental
       with:
         unity_editor_version_override: ${{ inputs.unity_editor_version_override }}
         unity_editor_modules: "${{ inputs.build_for_ios && 'ios ' || '' }}${{ inputs.build_for_android && 'android ' || '' }}"

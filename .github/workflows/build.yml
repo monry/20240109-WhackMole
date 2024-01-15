@@ -2,7 +2,23 @@ name: Build
 
 on:
   workflow_dispatch:
-
+    inputs:
+      # 利用する Unity Editor のバージョンを上書きする場合はバージョン名を指定
+      unity_editor_version_override:
+        type: string
+        required: false
+        default: ''
+      # iOS ビルドをするかどうか
+      build_for_ios:
+        type: boolean
+        required: false
+        default: true
+      # Android ビルドをするかどうか
+      build_for_android:
+        type: boolean
+        required: false
+        default: true
+  
 jobs:
   prepare:
     runs-on:
@@ -21,6 +37,9 @@ jobs:
         fetch-depth: 0
     - name: Install Unity Editor
       uses: monry/github_actions/.github/actions/unity/install_editor@experimental
+      with:
+        unity_editor_version_override: ${{ inputs.unity_editor_version_override }}
+        unity_editor_modules: "${{ inputs.build_for_ios && 'ios ' || '' }}${{ inputs.build_for_android && 'android ' || '' }}"
 
   cleanup:
     runs-on:

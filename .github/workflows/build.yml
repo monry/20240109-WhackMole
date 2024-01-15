@@ -8,16 +8,19 @@ on:
         type: string
         required: false
         default: ''
+        description: '利用する Unity Editor のバージョン (Optional)'
       # iOS ビルドをするかどうか
       build_for_ios:
         type: boolean
         required: false
         default: true
+        description: 'iOS ビルド'
       # Android ビルドをするかどうか
       build_for_android:
         type: boolean
         required: false
         default: true
+        description: 'Android ビルド'
   
 jobs:
   prepare:

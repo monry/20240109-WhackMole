@@ -35,7 +35,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        ssh-key: ${{ secrets.PRIVATE_KEY }}
         submodules: false
         persist-credentials: false
         set-safe-directory: false
@@ -59,7 +58,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        ssh-key: ${{ secrets.PRIVATE_KEY }}
         submodules: false
         persist-credentials: false
         set-safe-directory: false
@@ -69,13 +67,3 @@ jobs:
       with:
         unity_editor_version: ${{ needs.prepare.outputs.unity_editor_version }}
         target_platform: ${{ matrix.target_platform }}
-    
-  cleanup:
-    runs-on:
-      - self-hosted
-      - individual
-    needs: build
-    if: always()
-    steps:
-    - name: Cleanup Git Config
-      uses: monry/github_actions/.github/actions/git/cleanup_config@experimental

@@ -44,7 +44,7 @@ jobs:
       uses: monry/github_actions/.github/actions/unity/prepare@implement-with-csharp
       with:
         unity_editor_version_override: ${{ inputs.unity_editor_version_override }}
-        target_platforms: "${{ inputs.build_for_ios && 'iOS ' || '' }}${{ inputs.build_for_android && 'Android ' || '' }}"
+        target_platforms: "${{ inputs.build_for_ios && 'iOS,' || '' }}${{ inputs.build_for_android && 'Android,' || '' }}"
 
   build:
     runs-on:

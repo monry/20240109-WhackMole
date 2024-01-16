@@ -32,9 +32,11 @@ jobs:
       target_platforms: ${{ steps.prepare_for_build.outputs.target_platforms }}
 
     steps:
+    - uses: DeNA/setup-job-workspace-action@v2
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        clean: false
         submodules: false
         persist-credentials: false
         set-safe-directory: false
@@ -55,9 +57,11 @@ jobs:
       matrix:
         target_platform: ${{ fromJson(needs.prepare.outputs.target_platforms) }}
     steps:
+    - uses: DeNA/setup-job-workspace-action@v2
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        clean: false
         submodules: false
         persist-credentials: false
         set-safe-directory: false

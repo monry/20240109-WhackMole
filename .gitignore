@@ -76,7 +76,3 @@ crashlytics-build.properties
 
 # link.xml
 /[Aa]ssets/[Aa]dressableAssetsData/link.xml*
-
-# NuGetForUnity
-/[Aa]ssets/[Pp]ackages/*
-/[Aa]ssets/[Pp]ackages.meta

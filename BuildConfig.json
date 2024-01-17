@@ -1,3 +1,4 @@
 {
-    "methodName": "Monry.Toolbox.Editor.Build.PlayerBuilder.BuildOnly"
+    "methodName": "Monry.Toolbox.Editor.Build.PlayerBuilder.BuildOnly",
+    "useNuGetForUnity": true
 }

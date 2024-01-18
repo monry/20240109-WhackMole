@@ -113,7 +113,6 @@ public static class PlayerBuilder
             "Builds",
             BuildEnvironmentNames[EditorUserBuildSettings.development],
             EditorUserBuildSettings.activeBuildTarget.AsCanonicalName(),
-            Application.productName,
-            UserBuildSettings.createXcodeProject ? string.Empty : ".app"
+            $"{Application.productName}{(EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX && UserBuildSettings.createXcodeProject ? string.Empty : ".app")}"
         );
 }

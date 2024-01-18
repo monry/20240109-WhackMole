@@ -1,0 +1,24 @@
+{
+    "name": "Monry.Toolbox.Editor",
+    "rootNamespace": "Monry.Toolbox.Editor",
+    "references": [
+        "GUID:c0aca350a037b4568ba84b5fe5e1a50c"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.localization",
+            "expression": "",
+            "define": "USE_LOCALIZATION"
+        }
+    ],
+    "noEngineReferences": false
+}

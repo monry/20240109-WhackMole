@@ -109,5 +109,11 @@ public static class PlayerBuilder
     }
 
     private static string CreateBuildPath() =>
-        $"Builds/{BuildEnvironmentNames[EditorUserBuildSettings.development]}/{EditorUserBuildSettings.activeBuildTarget.AsCanonicalName()}/{Application.productName}{(UserBuildSettings.createXcodeProject ? "/" : ".app")}";
+        Path.Combine(
+            "Builds",
+            BuildEnvironmentNames[EditorUserBuildSettings.development],
+            EditorUserBuildSettings.activeBuildTarget.AsCanonicalName(),
+            Application.productName,
+            UserBuildSettings.createXcodeProject ? string.Empty : ".app"
+        );
 }

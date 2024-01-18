@@ -195,13 +195,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "3.2.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.render-pipelines.core": {
       "version": "14.0.9",
       "depth": 1,
@@ -313,15 +306,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "326eb5b66148826152cf1cadd6a4121394b80f89"
-    },
-    "jp.monry.toolbox": {
-      "version": "git+ssh://git@github.com/monry/UnityToolbox.git?path=/src/Monry.Toolbox/Assets/Toolbox/#main",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.0.2"
-      },
-      "hash": "32b1961e971885d6958840fc39f1672b01dcd575"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

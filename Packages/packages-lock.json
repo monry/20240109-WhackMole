@@ -315,13 +315,12 @@
       "hash": "326eb5b66148826152cf1cadd6a4121394b80f89"
     },
     "jp.monry.toolbox": {
-      "version": "git+ssh://git@github.com/monry/UnityToolbox.git?path=/src/Monry.Toolbox/Assets/Toolbox/#main",
+      "version": "file:jp.monry.toolbox",
       "depth": 0,
-      "source": "git",
+      "source": "embedded",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2"
-      },
-      "hash": "32b1961e971885d6958840fc39f1672b01dcd575"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

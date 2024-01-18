@@ -6,7 +6,6 @@
     "com.github-glitchenzo.nugetforunity": "git+ssh://git@github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity#v4.0.2",
     "jp.hadashikick.vcontainer": "git+ssh://git@github.com/hadashiA/VContainer.git?path=/VContainer/Assets/VContainer/#master",
     "jp.hadashikick.vitalrouter": "git+ssh://git@github.com/hadashiA/Vitalrouter.git?path=/VitalRouter.Unity/Assets/VitalRouter#0.2.0",
-    "jp.monry.toolbox": "git+ssh://git@github.com/monry/UnityToolbox.git?path=/src/Monry.Toolbox/Assets/Toolbox/#main",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.feature.2d": "2.0.0",
     "com.unity.ide.rider": "3.0.27",

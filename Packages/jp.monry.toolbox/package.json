@@ -1,0 +1,15 @@
+{
+  "name": "jp.monry.toolbox",
+  "version": "0.0.1",
+  "displayName": "Monry Toolbox",
+  "description": "Monry's toolbox for Unity",
+  "unity": "2022.3",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  },
+  "author": {
+    "name": "Tetsuya Mori",
+    "email": "monry84@gmail.com",
+    "url": "https://monry.jp"
+  }
+}

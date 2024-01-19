@@ -108,8 +108,22 @@ public static class PlayerBuilder
 
     private static void PrepareBuild()
     {
-        EditorUserBuildSettings.macOSXcodeBuildConfig = EditorUserBuildSettings.development ? XcodeBuildConfig.Debug : XcodeBuildConfig.Release;
+        // 開発ビルド関連
+        EditorUserBuildSettings.development = BuildContext.Development;
+        EditorUserBuildSettings.allowDebugging = BuildContext.AllowDebugging;
+        EditorUserBuildSettings.connectProfiler = BuildContext.ConnectWithProfiler;
+
+        // iOS 関連
         EditorUserBuildSettings.iOSXcodeBuildConfig = EditorUserBuildSettings.development ? XcodeBuildConfig.Debug : XcodeBuildConfig.Release;
+
+        // Android 関連
+        EditorUserBuildSettings.buildAppBundle = BuildContext.BuildAndroidAppBundle;
+        EditorUserBuildSettings.exportAsGoogleAndroidProject = BuildContext.ExportAsGoogleAndroidProject;
+        EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
+        EditorUserBuildSettings.androidBuildType = EditorUserBuildSettings.development ? AndroidBuildType.Debug : AndroidBuildType.Release;
+
+        // macOS 関連
+        EditorUserBuildSettings.macOSXcodeBuildConfig = EditorUserBuildSettings.development ? XcodeBuildConfig.Debug : XcodeBuildConfig.Release;
     }
 
     private static BuildPlayerOptions CreateBuildPlayerOptions()
@@ -144,6 +158,17 @@ public static class PlayerBuilder
             "Builds",
             BuildEnvironmentNames[EditorUserBuildSettings.development],
             EditorUserBuildSettings.activeBuildTarget.AsCanonicalName(),
-            $"{Application.productName}{(EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX && UserBuildSettings.createXcodeProject ? string.Empty : ".app")}"
+            $"{Application.productName}{ResolveExtension()}"
         );
+
+    private static string ResolveExtension() =>
+        EditorUserBuildSettings.activeBuildTarget switch
+        {
+            BuildTarget.StandaloneOSX when !UserBuildSettings.createXcodeProject
+                => ".app",
+            BuildTarget.Android when !EditorUserBuildSettings.exportAsGoogleAndroidProject
+                => EditorUserBuildSettings.buildAppBundle ? ".aab" : ".apk",
+            _
+                => string.Empty,
+        };
 }

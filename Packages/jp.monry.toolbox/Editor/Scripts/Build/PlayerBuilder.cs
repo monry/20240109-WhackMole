@@ -44,12 +44,13 @@ public static class PlayerBuilder
             JsonSerializer.Serialize(writer, value.summary, options);
             writer.WritePropertyName("steps");
             JsonSerializer.Serialize(writer, value.steps, options);
-            writer.WritePropertyName("strippingInfo");
-            JsonSerializer.Serialize(writer, value.strippingInfo, options);
-            writer.WritePropertyName("packedAssets");
-            JsonSerializer.Serialize(writer, value.packedAssets, options);
-            writer.WritePropertyName("scenesUsingAssets");
-            JsonSerializer.Serialize(writer, value.scenesUsingAssets, options);
+            // 以下のプロパティが返す型の中にも NoSupportedException を throw する輩がいるので、一旦無視する
+            // writer.WritePropertyName("strippingInfo");
+            // JsonSerializer.Serialize(writer, value.strippingInfo, options);
+            // writer.WritePropertyName("packedAssets");
+            // JsonSerializer.Serialize(writer, value.packedAssets, options);
+            // writer.WritePropertyName("scenesUsingAssets");
+            // JsonSerializer.Serialize(writer, value.scenesUsingAssets, options);
             writer.WriteEndObject();
         }
     }

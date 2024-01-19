@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Monry.Toolbox.Editor.Extensions;
 using Monry.Toolbox.Editor.Model;
 using UnityEditor;
@@ -22,7 +24,35 @@ public static class PlayerBuilder
     private static JsonSerializerOptions JsonSerializerOptions { get; } = new()
     {
         WriteIndented = true,
+        Converters =
+        {
+            new IgnoreObsoleteConverter(),
+        },
     };
+
+    private class IgnoreObsoleteConverter : JsonConverter<BuildReport>
+    {
+        public override BuildReport Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Write(Utf8JsonWriter writer, BuildReport value, JsonSerializerOptions options)
+        {
+            writer.WriteStartObject();
+            writer.WritePropertyName("summary");
+            JsonSerializer.Serialize(writer, value.summary, options);
+            writer.WritePropertyName("steps");
+            JsonSerializer.Serialize(writer, value.steps, options);
+            writer.WritePropertyName("strippingInfo");
+            JsonSerializer.Serialize(writer, value.strippingInfo, options);
+            writer.WritePropertyName("packedAssets");
+            JsonSerializer.Serialize(writer, value.packedAssets, options);
+            writer.WritePropertyName("scenesUsingAssets");
+            JsonSerializer.Serialize(writer, value.scenesUsingAssets, options);
+            writer.WriteEndObject();
+        }
+    }
 
     [MenuItem("Build/Player/Build", priority = MenuPriorities.Build_Player_BuildOnly)]
     public static void BuildOnly()

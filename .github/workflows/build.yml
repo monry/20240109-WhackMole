@@ -36,6 +36,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         clean: false
         submodules: recursive
         persist-credentials: false
@@ -61,6 +62,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         clean: false
         submodules: recursive
         persist-credentials: false

@@ -21,7 +21,7 @@ on:
         required: false
         default: true
         description: 'Android ビルド'
-  
+
 jobs:
   prepare:
     runs-on:
@@ -37,7 +37,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         clean: false
-        submodules: false
+        submodules: recursive
         persist-credentials: false
         set-safe-directory: false
         fetch-depth: 0
@@ -62,7 +62,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         clean: false
-        submodules: false
+        submodules: recursive
         persist-credentials: false
         set-safe-directory: false
         fetch-depth: 0

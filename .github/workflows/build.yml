@@ -36,6 +36,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        # Actions, Code, Pull Requests あたりが Read & Write になっている Fine-granted Personal Access Token を指定
+        # NOTE:
+        #   submodules を true とか recursive とかにすると ~/.gitconfig に認証情報などが [http "https://github.com"] として
+        #   書き込まれてしまい、submodule の clone でエラーになるため PAT でのアクセスを行う
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         clean: false
         submodules: recursive

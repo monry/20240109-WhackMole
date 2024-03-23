@@ -1,0 +1,3 @@
+[submodule "toolbox"]
+	path = Packages/jp.monry.toolbox
+	url = git@github.com:monry/UnityToolbox.UnityPackage.git
